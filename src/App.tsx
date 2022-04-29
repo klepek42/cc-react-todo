@@ -6,6 +6,7 @@ import Todos from "./components/Todos";
 function App() {
     const [title, setTitle] = useState("Käse");
     const [inputTitle, setInputTitle] = useState("");
+    const [hide, setHide] = useState(false);
 
     const onClickHandler = () => setTitle(inputTitle);
 
@@ -13,12 +14,19 @@ function App() {
         setInputTitle(event.target.value);
     };
 
+    const onClickHide = () => {
+        setHide(!hide);
+    };
+
     return (
         <div className="App">
             <Startseite/>
-            <Todos title={title}/>
+            <button onClick={onClickHide}>Show Todos</button>
+            <br />
+            <Todos title={title} hide={hide}/>
+            <br />
             <input onChange={onChangeHandler}/>
-            <button onClick={onClickHandler}>Change title</button>
+            <button onClick={onClickHandler} placeholder="Titel?">Change title</button>
         </div>
     );
 }

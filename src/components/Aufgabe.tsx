@@ -9,9 +9,8 @@ interface Aufgabe {
 
 const Aufgabe = ({title, beschreibung, erledigt}:Aufgabe) => {
     return (<div className="aufgabe">
-                <div className="title">{title}</div>
+                <div className="title"><input type="checkbox" checked={erledigt}></input>{title}</div>
                 <div className="beschreibung">{beschreibung}</div>
-                <div>{erledigt}</div>
             </div>);
 }
 
