@@ -1,0 +1,12 @@
+.aufgabe {
+    border: 1px solid black;
+}
+
+.title {
+    font-weight: bold;
+}
+
+.beschreibung {
+    color: gray;
+    font-style: italic;
+}
