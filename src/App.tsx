@@ -25,8 +25,8 @@ function App() {
             <br />
             <Todos title={title} hide={hide}/>
             <br />
-            <input onChange={onChangeHandler}/>
-            <button onClick={onClickHandler} placeholder="Titel?">Change title</button>
+            <input placeholder="Bitte Titel eingeben" onChange={onChangeHandler}/>
+            <button onClick={onClickHandler}>Change title</button>
         </div>
     );
 }

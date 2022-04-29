@@ -10,3 +10,8 @@
     color: gray;
     font-style: italic;
 }
+
+input:checked title {
+    color:red;
+    text-decoration: line-through;
+}
