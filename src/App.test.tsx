@@ -9,7 +9,6 @@ describe('App', () => {
             render(<App/>);
 
             expect(screen.getByText('Startseite')).toBeDefined();
-            expect(screen.getByText('Käse')).toBeDefined();
 
             expect(screen.getByText('Lecker essen')).toBeDefined();
             expect(screen.getByText('Etwas sehr köstliches mit viel Käse und Bacon essen!')).toBeDefined();
@@ -27,11 +26,27 @@ describe('App', () => {
         it('should hide Todos with Show Todos button', () => {
             render(<App/>);
 
-            const showTodosButton = screen.getByText('Show Todos');
+            const showTodosButton = screen.getByText('Hide Todos');
             expect(showTodosButton).toBeDefined();
 
             userEvent.click(showTodosButton);
-            // TODO: Umbau mit Conditional Rendering dann abfragen auf vorhandene Inhalte
+
+            const hideTodosButton = screen.getByText('Show Todos');
+            expect(hideTodosButton).toBeDefined();
+
+            expect(screen.getByText('Startseite')).toBeDefined();
+
+            expect(screen.queryByText('Lecker essen')).toBeNull();
+            expect(screen.queryByText('Etwas sehr köstliches mit viel Käse und Bacon essen!')).toBeNull();
+            expect(screen.queryByText('check-Lecker essen')).toBeNull();
+
+            expect(screen.queryByText('React lernen')).toBeNull();
+            expect(screen.queryByText('Ganz viel wichtige React Grundlagen erlernen.')).toBeNull();
+            expect(screen.queryByText('check-React lernen')).toBeNull();
+
+            expect(screen.queryByText('Kaffee trinken')).toBeNull();
+            expect(screen.queryByText('Kaffee trinken um wach zu werden')).toBeNull();
+            expect(screen.queryByText('check-Kaffee trinken')).toBeNull();
         });
 
     }
