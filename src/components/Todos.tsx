@@ -22,7 +22,7 @@ const Todos = ({title, hide}: Props) => {
         console.log("newAufgabe: " + newAufgabe);
 
         setAufgaben((prevAufgaben): Aufgabe[] => {
-            return [aufgabe, ...prevAufgaben];
+            return [...prevAufgaben, aufgabe];
         });
     }
 
