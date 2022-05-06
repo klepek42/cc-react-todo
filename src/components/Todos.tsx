@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import Aufgabe from './Aufgabe';
 import NeueAufgabe from "./NeueAufgabe";
+import './Todos.css';
 
 interface Props {
     title: string;
@@ -27,10 +28,11 @@ const Todos = ({title, hide}: Props) => {
 
     return (
         <div>
-            <div data-testid="todoWrapper" hidden={hide}>
+            <div data-testid="todoWrapper" className="todo-list" hidden={hide}>
                 <h2>{title}</h2>
                 {aufgaben.map((aufgabe, index) =>
-                    <Aufgabe key={index} title={aufgabe.title} beschreibung={aufgabe.beschreibung}
+                    <Aufgabe key={index} title={aufgabe.title}
+                             beschreibung={aufgabe.beschreibung}
                              erledigt={aufgabe.erledigt}/>)}
             </div>
             <NeueAufgabe onAddAufgabe={addAufgabeHandler}/>

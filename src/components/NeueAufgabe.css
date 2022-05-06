@@ -1,0 +1,14 @@
+.neue-aufgabe-wrapper {
+    margin-top: 6rem;
+    border: 1px solid black;
+    border-radius: 1rem;
+    width: 40rem;
+}
+
+.neue-aufgabe {
+    margin-left: 2rem;
+}
+
+.button {
+    margin-top: 1rem;
+}

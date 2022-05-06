@@ -14,7 +14,7 @@ const Aufgabe = ({title, beschreibung, erledigt}: Aufgabe) => {
         setDone(!done);
     };
 
-    return (<div className="aufgabe">
+    return (<div className="todo-list-item">
         <div className="title"><input data-testid={`check-${title}`} onChange={onClickErledigt} type="checkbox"
                                       checked={done}/>{title}</div>
         <div className="beschreibung">{beschreibung}</div>

@@ -1,23 +1,24 @@
-import React, {FormEventHandler, useState} from "react";
+import React, {useState} from "react";
 import Aufgabe from "./Aufgabe";
+import './NeueAufgabe.css';
 
 interface Props {
-    onAddAufgabe: (aufgabe:Aufgabe) => void;
+    onAddAufgabe: (aufgabe: Aufgabe) => void;
 }
 
-const NeueAufgabe = ({onAddAufgabe}:Props) => {
+const NeueAufgabe = ({onAddAufgabe}: Props) => {
     const [title, setTitle] = useState<string>('');
     const [beschreibung, setBeschreibung] = useState<string>('');
 
-    const onChangeAufgabeHandler = (event: React.ChangeEvent<HTMLInputElement>):void => {
+    const onChangeAufgabeHandler = (event: React.ChangeEvent<HTMLInputElement>): void => {
         setTitle(event.target.value);
     };
 
-    const onChangeBeschreibungHandler = (event: React.ChangeEvent<HTMLInputElement>):void => {
+    const onChangeBeschreibungHandler = (event: React.ChangeEvent<HTMLInputElement>): void => {
         setBeschreibung(event.target.value);
     };
 
-    const submitHandler = (event: React.FormEvent<HTMLFormElement>):void => {
+    const submitHandler = (event: React.FormEvent<HTMLFormElement>): void => {
         console.log("submitHandler");
         event.preventDefault();
 
@@ -32,21 +33,24 @@ const NeueAufgabe = ({onAddAufgabe}:Props) => {
         setBeschreibung(beschreibung);
     };
 
-    return (<div>
-        <h2>Neue Aufgabe</h2>
+    return (<div className="neue-aufgabe-wrapper">
         <div>
             <form onSubmit={submitHandler}>
-                <div>
-                    <label>Aufgabe</label>
-                    <input onChange={onChangeAufgabeHandler} type="text" />
+                <div className="neue-aufgabe">
+                    <h3>Neue Aufgabe</h3>
+                    <div>
+                        <label>Aufgabe</label><br/>
+                        <input onChange={onChangeAufgabeHandler} type="text"/>
+                    </div>
+                    <br/>
+                    <div>
+                        <label>Beschreibung</label><br/>
+                        <input onChange={onChangeBeschreibungHandler} type="text"/>
+                    </div>
+                    <button className="button" type="submit">Aufgabe hinzufügen</button>
                 </div>
-                <div>
-                    <label>Beschreibung</label>
-                    <input onChange={onChangeBeschreibungHandler} type="text" />
-                </div>
-            <button type="submit">Aufgabe hinzufügen</button>
             </form>
-            <br />
+            <br/>
         </div>
     </div>);
 }

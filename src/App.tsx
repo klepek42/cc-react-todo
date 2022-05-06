@@ -4,7 +4,7 @@ import Startseite from "./components/Startseite";
 import Todos from "./components/Todos";
 
 function App() {
-    const [title, setTitle] = useState("Käse");
+    const [title, setTitle] = useState("My Todos");
     const [inputTitle, setInputTitle] = useState("");
     const [hide, setHide] = useState(false);
 
@@ -20,14 +20,20 @@ function App() {
 
     return (
         <div className="App">
-            <Startseite/>
-            <button onClick={onClickHide}>Show Todos</button>
-            <br />
-            <Todos title={title} hide={hide}/>
-            <br />
-            <input placeholder="Bitte Titel eingeben" onChange={onChangeHandler}/>
-            <button onClick={onClickHandler}>Change title</button>
-            <br />
+            <div>
+                <Startseite/>
+                <br/>
+                <button onClick={onClickHide}>Show Todos</button>
+                <br/>
+                <Todos title={title} hide={hide}/>
+                <br/>
+                <button>New Todo</button>
+                {/*<br/>*/}
+                {/*<button onClick={onClickHandler}>Change title</button>*/}
+                {/*<br/>*/}
+                {/*<input placeholder="Bitte Titel eingeben" onChange={onChangeHandler}/>*/}
+                {/*<br/>*/}
+            </div>
         </div>
     );
 }

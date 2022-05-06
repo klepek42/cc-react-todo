@@ -1,5 +1,6 @@
-.aufgabe {
+.todo-list-item {
     border-bottom: 1px solid black;
+    margin-top: 1rem;
 }
 
 .title {
@@ -12,6 +13,6 @@
 }
 
 input:checked title {
-    color:red;
+    color: red;
     text-decoration: line-through;
 }
