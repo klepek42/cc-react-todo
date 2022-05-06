@@ -12,6 +12,11 @@
     font-style: italic;
 }
 
+.remove-button {
+    color: red;
+    border: 1px solid red;
+}
+
 input:checked title {
     color: red;
     text-decoration: line-through;

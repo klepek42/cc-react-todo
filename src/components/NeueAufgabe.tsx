@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import Aufgabe from "./Aufgabe";
+import {Aufgabe} from "../types";
 import './NeueAufgabe.css';
 
 interface Props {
@@ -33,8 +33,7 @@ const NeueAufgabe = ({onAddAufgabe}: Props) => {
     };
 
     const cancelHandler = (event: React.MouseEvent<HTMLButtonElement>): void => {
-        setTitle('');
-        setBeschreibung('');
+        // Do nothing to cancel
     }
 
     return (<div className="neue-aufgabe-wrapper">

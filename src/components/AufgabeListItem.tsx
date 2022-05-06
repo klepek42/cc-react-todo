@@ -7,7 +7,7 @@ interface Props {
     removeAufgabeHandler: (aufgabe: Aufgabe) => void;
 }
 
-const Aufgabe = ({aufgabe, removeAufgabeHandler}: Props) => {
+const AufgabeListItem = ({aufgabe, removeAufgabeHandler}: Props) => {
     const {title, beschreibung, erledigt} = aufgabe;
     const [done, setDone] = useState(erledigt);
 
@@ -27,4 +27,4 @@ const Aufgabe = ({aufgabe, removeAufgabeHandler}: Props) => {
     </div>);
 }
 
-export default Aufgabe;
+export default AufgabeListItem;
