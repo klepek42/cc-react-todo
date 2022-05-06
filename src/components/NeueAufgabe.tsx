@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import Aufgabe from "./Aufgabe";
+import {Aufgabe} from "../types";
 import './NeueAufgabe.css';
 
 interface Props {
@@ -18,7 +18,7 @@ const NeueAufgabe = ({onAddAufgabe}: Props) => {
         setBeschreibung(event.target.value);
     };
 
-    const submitHandler = (event: React.FormEvent<HTMLFormElement>): void => {
+    const submitHandler = (event: React.MouseEvent<HTMLButtonElement>): void => {
         event.preventDefault();
 
         const aufgabe = {
@@ -32,9 +32,13 @@ const NeueAufgabe = ({onAddAufgabe}: Props) => {
         setBeschreibung(beschreibung);
     };
 
+    const cancelHandler = (event: React.MouseEvent<HTMLButtonElement>): void => {
+        // Do nothing to cancel
+    }
+
     return (<div className="neue-aufgabe-wrapper">
         <div>
-            <form onSubmit={submitHandler}>
+            <form>
                 <div className="neue-aufgabe">
                     <h3>Neue Aufgabe</h3>
                     <div>
@@ -46,9 +50,9 @@ const NeueAufgabe = ({onAddAufgabe}: Props) => {
                         <label>Beschreibung</label><br/>
                         <input onChange={onChangeBeschreibungHandler} type="text"/>
                     </div>
-                    <button className="button" type="submit">Aufgabe hinzufügen</button>
+                    <button className="button" type="submit" onClick={submitHandler}>Aufgabe hinzufügen</button>
                     <br/>
-                    <button className="button">Abbrechen</button>
+                    <button className="button" onClick={cancelHandler}>Abbrechen</button>
                 </div>
             </form>
             <br/>
