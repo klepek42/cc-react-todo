@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import './App.css';
 import Startseite from "./components/Startseite";
 import Todos from "./components/Todos";
-import NeueAufgabe from "./components/NeueAufgabe";
 
 function App() {
     const [title, setTitle] = useState("Käse");

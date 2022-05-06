@@ -7,17 +7,18 @@ interface Aufgabe {
     erledigt: boolean;
 }
 
-const Aufgabe = ({title, beschreibung, erledigt}:Aufgabe) => {
-    const [erledigtState, setErledigtState] = useState(erledigt);
+const Aufgabe = ({title, beschreibung, erledigt}: Aufgabe) => {
+    const [done, setDone] = useState(erledigt);
 
-    const onClickErledigt = () => {
-        setErledigtState(!erledigtState);
+    const onClickErledigt = (): void => {
+        setDone(!done);
     };
 
     return (<div className="aufgabe">
-                <div className="title"><input onChange={onClickErledigt} type="checkbox" checked={erledigtState}/>{title}</div>
-                <div className="beschreibung">{beschreibung}</div>
-            </div>);
+        <div className="title"><input data-testid={`check-${title}`} onChange={onClickErledigt} type="checkbox"
+                                      checked={done}/>{title}</div>
+        <div className="beschreibung">{beschreibung}</div>
+    </div>);
 }
 
 export default Aufgabe;
