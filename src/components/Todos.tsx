@@ -7,32 +7,33 @@ interface Props {
     hide: boolean;
 }
 
-const DUMMY_AUFGABEN:Aufgabe[] = [
+const DUMMY_AUFGABEN: Aufgabe[] = [
     {title: "Lecker essen", beschreibung: "Etwas sehr köstliches mit viel Käse und Bacon essen!", erledigt: false},
     {title: "React lernen", beschreibung: "Ganz viel wichtige React Grundlagen erlernen.", erledigt: false},
     {title: "Kaffee trinken", beschreibung: "Kaffee trinken um wach zu werden", erledigt: true}
 ];
 
-const Todos = ({title, hide}:Props) => {
+const Todos = ({title, hide}: Props) => {
     const [aufgaben, setAufgaben] = useState(DUMMY_AUFGABEN);
 
-    const addAufgabeHandler = (aufgabe:Aufgabe):void => {
+    const addAufgabeHandler = (aufgabe: Aufgabe): void => {
         const newAufgabe = {title: 'Neues Todo', beschreibung: 'Neu Beschreibung', erledigt: false};
         console.log("newAufgabe: " + newAufgabe);
 
-        setAufgaben((prevAufgaben):Aufgabe[] => {
+        setAufgaben((prevAufgaben): Aufgabe[] => {
             return [aufgabe, ...prevAufgaben];
         });
     }
 
     return (
         <div>
-            <div hidden={hide}>
-                    <h2>{title}</h2>
-                    {aufgaben.map((aufgabe, index) =>
-                        <Aufgabe key={index} title={aufgabe.title} beschreibung={aufgabe.beschreibung} erledigt={aufgabe.erledigt}/>)}
+            <div data-testid="todoWrapper" hidden={hide}>
+                <h2>{title}</h2>
+                {aufgaben.map((aufgabe, index) =>
+                    <Aufgabe key={index} title={aufgabe.title} beschreibung={aufgabe.beschreibung}
+                             erledigt={aufgabe.erledigt}/>)}
             </div>
-            <NeueAufgabe onAddAufgabe={addAufgabeHandler} />
+            <NeueAufgabe onAddAufgabe={addAufgabeHandler}/>
         </div>);
 }
 

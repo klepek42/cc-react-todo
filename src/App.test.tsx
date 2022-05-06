@@ -1,6 +1,7 @@
 import React from 'react';
-import {render, screen} from '@testing-library/react';
 import App from './App';
+import {render, screen} from '@testing-library/react';
+import userEvent from "@testing-library/user-event";
 
 describe('App', () => {
 
@@ -21,6 +22,16 @@ describe('App', () => {
             expect(screen.getByText('Kaffee trinken')).toBeDefined();
             expect(screen.getByText('Kaffee trinken um wach zu werden')).toBeDefined();
             expect(screen.getByTestId('check-Kaffee trinken')).toBeChecked();
+        });
+
+        it('should hide Todos with Show Todos button', () => {
+            render(<App/>);
+
+            const showTodosButton = screen.getByText('Show Todos');
+            expect(showTodosButton).toBeDefined();
+
+            userEvent.click(showTodosButton);
+            // TODO: Umbau mit Conditional Rendering dann abfragen auf vorhandene Inhalte
         });
 
     }
