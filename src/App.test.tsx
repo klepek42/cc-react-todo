@@ -49,6 +49,10 @@ describe('App', () => {
             expect(screen.queryByText('check-Kaffee trinken')).toBeNull();
         });
 
+        it('should add new Todo and show it in list', () => {
+            
+        });
+
     }
 );
 

@@ -6,6 +6,8 @@ import './Todos.css';
 interface Props {
     title: string;
     hide: boolean;
+    newTodo: boolean;
+    setNewTodo: (newTodo: boolean) => void;
 }
 
 const DUMMY_AUFGABEN: Aufgabe[] = [
@@ -14,31 +16,31 @@ const DUMMY_AUFGABEN: Aufgabe[] = [
     {title: "Kaffee trinken", beschreibung: "Kaffee trinken um wach zu werden", erledigt: true}
 ];
 
-const Todos = ({title, hide}: Props) => {
+const Todos = ({title, hide, newTodo, setNewTodo}: Props) => {
     const [aufgaben, setAufgaben] = useState(DUMMY_AUFGABEN);
 
     const addAufgabeHandler = (aufgabe: Aufgabe): void => {
-        const newAufgabe = {title: 'Neues Todo', beschreibung: 'Neu Beschreibung', erledigt: false};
-        console.log("newAufgabe: " + newAufgabe);
 
         setAufgaben((prevAufgaben): Aufgabe[] => {
             return [...prevAufgaben, aufgabe];
         });
+
+        setNewTodo(false);
     }
 
     return (
         <div>
-            {!hide ? (
-                <div data-testid="todoWrapper" className="todo-list" hidden={hide}>
+            {!hide && (
+                <div data-testid="todoWrapper" className="todo-list">
                     <h2>{title}</h2>
                     {aufgaben.map((aufgabe, index) =>
                         <Aufgabe key={index} title={aufgabe.title}
                                  beschreibung={aufgabe.beschreibung}
                                  erledigt={aufgabe.erledigt}/>)}
                 </div>
-            ) : (<p></p>)}
+            )}
 
-            <NeueAufgabe onAddAufgabe={addAufgabeHandler}/>
+            {newTodo && <NeueAufgabe onAddAufgabe={addAufgabeHandler}/>}
         </div>);
 }
 

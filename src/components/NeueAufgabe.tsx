@@ -19,7 +19,6 @@ const NeueAufgabe = ({onAddAufgabe}: Props) => {
     };
 
     const submitHandler = (event: React.FormEvent<HTMLFormElement>): void => {
-        console.log("submitHandler");
         event.preventDefault();
 
         const aufgabe = {
@@ -48,6 +47,8 @@ const NeueAufgabe = ({onAddAufgabe}: Props) => {
                         <input onChange={onChangeBeschreibungHandler} type="text"/>
                     </div>
                     <button className="button" type="submit">Aufgabe hinzufügen</button>
+                    <br/>
+                    <button className="button">Abbrechen</button>
                 </div>
             </form>
             <br/>

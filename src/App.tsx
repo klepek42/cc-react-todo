@@ -6,9 +6,14 @@ import Todos from "./components/Todos";
 function App() {
     const [title, setTitle] = useState("My Todos");
     const [hide, setHide] = useState(false);
+    const [newTodo, setNewTodo] = useState(false);
 
-    const onClickHide = () => {
+    const hideTodos = () => {
         setHide(!hide);
+    };
+
+    const showNewTodo = () => {
+        setNewTodo(!newTodo);
     };
 
     return (
@@ -16,11 +21,11 @@ function App() {
             <div>
                 <Startseite/>
                 <br/>
-                <button onClick={onClickHide}>{hide ? "Show" : "Hide"} Todos</button>
+                <button onClick={hideTodos}>{hide ? "Show" : "Hide"} Todos</button>
                 <br/>
-                <Todos title={title} hide={hide}/>
+                <Todos title={title} hide={hide} newTodo={newTodo} setNewTodo={setNewTodo}/>
                 <br/>
-                <button>New Todo</button>
+                {!newTodo && (<button onClick={showNewTodo}>Add new Todo</button>)}
             </div>
         </div>
     );
