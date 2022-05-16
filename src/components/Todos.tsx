@@ -31,6 +31,7 @@ const DUMMY_AUFGABEN: Aufgabe[] = [
 
 const Todos = ({ title, hide, newTodo, setNewTodo }: Props) => {
   const [aufgaben, setAufgaben] = useState(DUMMY_AUFGABEN);
+  const [sucheText, setSucheText] = useState("");
 
   const addAufgabeHandler = (aufgabe: Aufgabe): void => {
     setAufgaben((prevAufgaben): Aufgabe[] => {
@@ -49,12 +50,30 @@ const Todos = ({ title, hide, newTodo, setNewTodo }: Props) => {
     });
   };
 
+  const changeSucheHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.value.length > 2) {
+      setSucheText(event.target.value);
+    }
+  };
+
+  const filterTodos = (aufgabe: Aufgabe): boolean =>
+    sucheText.length > 2
+      ? aufgabe.title.length > 2 && aufgabe.title === sucheText
+      : true;
+
   return (
     <div>
       {!hide && (
         <div data-testid="todoWrapper" className="todo-list">
           <h2>{title}</h2>
-          {aufgaben.map((aufgabe, index) => (
+          <input
+            className="search-input"
+            data-testid="search-input"
+            type="text"
+            placeholder="Suche..."
+            onChange={changeSucheHandler}
+          />
+          {aufgaben.filter(filterTodos).map((aufgabe, index) => (
             <AufgabeListItem
               key={index}
               aufgabe={aufgabe}
