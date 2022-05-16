@@ -67,6 +67,7 @@ const Todos = ({ title, hide, newTodo, setNewTodo }: Props) => {
         <div data-testid="todoWrapper" className="todo-list">
           <h2>{title}</h2>
           <input
+            className="search-input"
             data-testid="search-input"
             type="text"
             placeholder="Suche..."
